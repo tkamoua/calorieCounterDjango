@@ -43,7 +43,8 @@ for item in mosherMenu.find_all('li', class_=re.compile('^trait-')):
 for i in range(len(caloriesList)):
     temp = re.findall(r'\d+', caloriesList[i]) 
     nutritionalList.append(temp)
-    nutritionalList[i].append(proteinList[i])
+    temp2 = re.findall(r'\d+', proteinList[i])
+    nutritionalList[i].append(temp2[0])
 
 itemsDict = dict(zip(itemsList,nutritionalList))
 

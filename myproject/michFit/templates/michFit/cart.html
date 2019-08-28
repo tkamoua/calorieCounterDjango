@@ -19,11 +19,15 @@
 
 <h1>Cart</h1>
 <ul>
+
     {% if cart %}
     <ul>
+
     {% for item in cart %}
-        <li><strong>{{ item.name }}</strong>   Calories: {{ item.calories}} Protein: {{item.protein}} </li>
+        <li><strong>{{ item.name }}</strong>   Calories: {{ item.calories}} Protein: {{item.protein}} <a href="{% url 'michFit:cartdelete' item.id %}"><button>Delete Item</button></a> </li>
     {% endfor %}
+   <h2>Calories: {{totalCalories}} </h2>
+   <h2>Protein: {{totalProtein}}</h2>
     </ul>
 {% else %}
     <p>Empty Cart</p>
