@@ -16,11 +16,22 @@
 </head>
 
 <body>
-<h1>{{item.name}}</h1>
-<h2>Calories: {{item.calories}}</h2>
-<h2>Protein: {{item.protein}}</h2>
 
-<a href="{% url 'michFit:cart' item.id %}">Add to Cart</a>
+<h1>Cart</h1>
+<ul>
+    {% if cart %}
+    <ul>
+    {% for item in cart %}
+        <li><strong>{{ item.name }}</strong>   Calories: {{ item.calories}} Protein: {{item.protein}} </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Empty Cart</p>
+{% endif %}
+    
+
+</ul>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 </body>

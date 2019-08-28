@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.http import require_POST
-from .forms import CartAddProductForm
+from django.shortcuts import render
+
+
 from django.http import HttpResponse, Http404
 from .models import MenuItem
 from . import calorieCounter
@@ -21,8 +21,10 @@ def detail(request,name):
         raise Http404("Item does not exist")
     return render(request, 'michFit/detail.html',{'item': item})
 
-def addCart(request,item_id):
-    cart.append(item_id)
-def viewCart(request):
-    return render(request,'michFit/cart.html')
+
+def cart_add(request, item_id):
+    cart.append(MenuItem.objects.get(pk=item_id))
+    print(cart[0].name)
+
+    return render(request, 'michFit/cart.html',{'cart': cart} )
     
