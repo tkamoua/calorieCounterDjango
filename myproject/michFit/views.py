@@ -17,13 +17,22 @@ def home(request):
 
 
 def cartdelete(request, item_id):
-    cart.remove(MenuItem.objects.get(pk=item_id))
-    totalCalories = 0
-    totalProtein=0
-    for item in cart:
-        totalCalories += item.calories
-        totalProtein+=item.protein
-    return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
+    try:
+        cart.remove(MenuItem.objects.get(pk=item_id))
+        totalCalories = 0
+        totalProtein=0
+        for item in cart:
+            totalCalories += item.calories
+            totalProtein+=item.protein
+        return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
+    except:
+        totalCalories = 0
+        totalProtein=0
+        for item in cart:
+            totalCalories += item.calories
+            totalProtein+=item.protein
+        return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
+    
 
 def cart_add( request,item_id):
     cart.append(MenuItem.objects.get(pk=item_id))
