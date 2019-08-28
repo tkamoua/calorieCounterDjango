@@ -1,0 +1,28 @@
+
+  {% load static %}
+  <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'michFit/style.css' %}">
+</head>
+
+<body>
+<h1>{{item.name}}</h1>
+<h2>Calories: {{item.calories}}</h2>
+<h2>Protein: {{item.protein}}</h2>
+<button >Add to Meal Plan</button>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</body>
+
+</html>

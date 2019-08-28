@@ -1,0 +1,34 @@
+
+  {% load static %}
+  <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'michFit/style.css' %}">
+</head>
+
+<body>
+<h1>Todays Menu (Mojo)</h1>
+  {% if menu %}
+    <ul>
+    {% for item in menu %}
+        <li><a href="{% url 'michFit:detail' item.id %}"><strong>{{ item.name }}</strong>   Calories: {{ item.calories}} Protein: {{item.protein}} </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No food today.</p>
+{% endif %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</body>
+
+</html>
