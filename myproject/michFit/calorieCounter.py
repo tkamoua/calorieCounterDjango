@@ -19,8 +19,8 @@ proteinList=[]
 nutritionalList = []
 mosherMenu = bs4.BeautifulSoup(res.text, features = "lxml")
 
-menuFile = open('menuFile.json', 'w')
-for item in mosherMenu.find_all('li', class_=re.compile('^trait-')):
+menuFile = open('menuFile.txt', 'w')
+for item in mosherMenu.find_all('li', class_=re.compile('^trait-|allergen')):
     if "item-name" in str(item):
 
          itemName = item.find(class_='item-name').text
@@ -34,8 +34,8 @@ for item in mosherMenu.find_all('li', class_=re.compile('^trait-')):
             proteinList.append(numProtein)
         
 
-#menuFile.write(str(pprint.pformat(itemsList)))
-#menuFile.write(str(pprint.pformat(caloriesList)))
+menuFile.write(str(pprint.pformat(itemsList)))
+menuFile.write(str(pprint.pformat(caloriesList)))
 
 
 
@@ -53,6 +53,6 @@ itemsDict = dict(zip(itemsList,nutritionalList))
 
 
 
-menu_json = json.dumps(pprint.pformat(itemsDict))
-menuFile.write(menu_json)
+#menu_json = json.dumps(pprint.pformat(itemsDict))
+#menuFile.write(menu_json)
 menuFile.close()
